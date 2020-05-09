@@ -1,27 +1,7 @@
 import React, { useState } from "react";
 import { Container, TextField } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-function NavBar() {
-  return (
-    <nav
-      style={{
-        background:
-          "linear-gradient(270deg, rgba(47,16,69,1) 0%, rgba(95,35,138,1) 50%, rgba(47,16,69,1) 100%)",
-        height: "8vh",
-      }}
-      class="navbar navbar-expand-lg navbar-light "
-    >
-      <a
-        style={{ color: "orange", alignSelf: "center" }}
-        class="navbar-brand "
-        href="#"
-      >
-        APParty
-      </a>
-    </nav>
-  );
-}
+import NavBar from "../../components/nav-bar.component";
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -82,17 +62,19 @@ export default function Login() {
               Manter-me logado
             </label>
           </div>
-          <button
-            type="submit"
-            class="btn btn-warning"
-            onClick={() => {
-              console.log("Email: " + email);
-              console.log("Senha: " + password);
-            }}
-            style={{ marginTop: 20 }}
-          >
-            Logar
-          </button>
+          <Link to="/">
+            <button
+              type="submit"
+              class="btn btn-warning"
+              onClick={() => {
+                console.log("Email: " + email);
+                console.log("Senha: " + password);
+              }}
+              style={{ marginTop: 20 }}
+            >
+              Logar
+            </button>
+          </Link>
         </form>
       </div>
     </div>

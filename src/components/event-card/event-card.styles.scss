@@ -1,0 +1,43 @@
+.event-card {
+  height: 380px;
+  width: 250px;
+  background: linear-gradient(
+    270deg,
+    rgba(47, 16, 69, 1) 0%,
+    rgb(75, 26, 110) 50%,
+    rgba(47, 16, 69, 1) 100%
+  );
+  margin: 30px;
+  border-width: 2px;
+  border-color: orange;
+  border-style: solid;
+  border-radius: 0px;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.event-name {
+  margin-top: 16px;
+  color: white;
+}
+
+.event-photo {
+  height: 180px;
+  width: 246px;
+  border-width: 0.5px;
+  border-color: orange;
+  border-style: solid;
+  border-radius: 0px;
+}
+
+.event-button {
+  width: 200px;
+  background-color: orange;
+  border-width: 1px;
+  border-color: orange;
+  border-style: solid;
+  border-radius: 5px;
+  font-family: "Righteous", cursive;
+  font-size: 24px;
+}

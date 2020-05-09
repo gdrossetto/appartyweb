@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Login from "./components/login.js";
+import Login from "./pages/login/login";
+import HomePage from "./pages/home/home";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/about">
-          <Login />
-        </Route>
-        <Route path="/users">
-          <Login />
-        </Route>
-        <Route path="/">
-          <Login />
-        </Route>
+        <Route path="/login" component={Login} />
+        <Route exact path="/" component={HomePage} />
       </Switch>
     </Router>
   );
