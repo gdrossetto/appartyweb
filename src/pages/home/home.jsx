@@ -25,15 +25,13 @@ const HomePage = () => {
       <div className="homepage-container">
         {events.map((event) => {
           return (
-            <div>
-              <EventCard
-                key={event.id}
-                foto={event.foto}
-                name={event.name}
-                local={event.local}
-                date={event.data}
-              />
-            </div>
+            <EventCard
+              key={event.id}
+              foto={event.foto}
+              name={event.name}
+              local={event.local}
+              date={event.data}
+            />
           );
         })}
       </div>

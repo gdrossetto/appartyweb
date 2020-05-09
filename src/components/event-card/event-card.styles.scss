@@ -1,5 +1,5 @@
 .event-card {
-  height: 380px;
+  height: auto;
   width: 250px;
   background: linear-gradient(
     270deg,
@@ -15,17 +15,19 @@
   text-align: center;
   background-size: cover;
   background-position: center;
+  word-wrap: break-word;
 }
 
 .event-name {
   margin-top: 16px;
   color: white;
+  font-family: "Righteous", cursive;
 }
 
 .event-photo {
   height: 180px;
   width: 246px;
-  border-width: 0.5px;
+  border-width: 1px;
   border-color: orange;
   border-style: solid;
   border-radius: 0px;
@@ -40,4 +42,5 @@
   border-radius: 5px;
   font-family: "Righteous", cursive;
   font-size: 24px;
+  margin-bottom: 20px;
 }
