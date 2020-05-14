@@ -1,0 +1,46 @@
+.event-name {
+  margin-top: 0;
+  color: white;
+  font-family: "Righteous", cursive;
+  text-align: center;
+  padding-top: 5vh;
+}
+
+.search-container {
+  background-image: url("https://i.pinimg.com/originals/48/4e/8b/484e8b75c17479f727978e48958de565.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 30vh;
+  border-bottom-width: 1px;
+  border-bottom-color: orange;
+  border-bottom-style: solid;
+  margin-bottom: 40px;
+}
+
+.event-button {
+  width: 200px;
+  background-color: orange;
+  border-bottom-width: 1px;
+  border-bottom-color: orange;
+  border-bottom-style: solid;
+  border-radius: 5px;
+  font-family: "Righteous", cursive;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.searchbox-style {
+  margin-top: 40px;
+  border-radius: 10px;
+  width: 40vw;
+  padding: 5px;
+  color: white;
+  background-color: rgba(47, 16, 69, 1);
+  border-width: 2px;
+  border-color: orange;
+  border-style: solid;
+  margin-right: 10px;
+  font-family: "Righteous", cursive;
+}

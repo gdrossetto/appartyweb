@@ -31,7 +31,7 @@ const NewEvent = () => {
           </div>
           <div className="form-group">
             <label className="form-label" htmlFor="">
-              Local
+              Resumo
             </label>
             <input className="form-control" type="text" />
           </div>
@@ -48,7 +48,7 @@ const NewEvent = () => {
           </div>
           <div className="form-group">
             <label className="form-label" htmlFor="">
-              Capacidade
+              Local
             </label>
             <input className="form-control" type="text" />
           </div>
@@ -59,6 +59,7 @@ const NewEvent = () => {
             <textarea className="form-control" type="text" />
           </div>
         </form>
+        <button className="create-event-button">Criar Evento</button>
       </div>
     </div>
   );

@@ -16,12 +16,23 @@
   background-size: cover;
   background-position: center;
   word-wrap: break-word;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+.event-card:hover {
+  transform: scale(1.05);
+  box-shadow: orange;
+  -webkit-box-shadow: 9px 10px 37px -4px rgba(231, 166, 26, 1);
+  -moz-box-shadow: 9px 10px 37px -4px rgba(231, 166, 26, 1);
+  box-shadow: 9px 10px 37px -4px rgba(231, 166, 26, 1);
 }
 
 .event-name {
-  margin-top: 16px;
+  margin-top: 0;
   color: white;
   font-family: "Righteous", cursive;
+  text-align: center;
+  padding-top: 5vh;
 }
 
 .event-photo {
@@ -31,6 +42,29 @@
   border-color: orange;
   border-style: solid;
   border-radius: 0px;
+}
+
+.event-container {
+  background-image: url("https://i.pinimg.com/originals/48/4e/8b/484e8b75c17479f727978e48958de565.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 50vh;
+  border-width: 1px;
+  border-color: orange;
+  border-style: solid;
+}
+.event-content {
+  background-color: rgba(47, 16, 69, 0.7);
+  height: 50vh;
+  width: 100vw;
+}
+.event-content:hover {
+  background-color: rgba(241, 174, 87, 0.7);
+  .event-name {
+    color: rgba(47, 16, 69, 1);
+  }
 }
 
 .event-button {

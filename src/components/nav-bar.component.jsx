@@ -1,45 +1,6 @@
 import React from "react";
 
-const OldNavBar = () => {
-  return (
-    <nav
-      style={{
-        background:
-          "linear-gradient(270deg, rgba(47,16,69,1) 0%, rgba(95,35,138,1) 50%, rgba(47,16,69,1) 100%)",
-        height: "8vh",
-      }}
-      className="navbar navbar-expand-lg navbar-light "
-    >
-      <a
-        style={{
-          color: "orange",
-          alignSelf: "center",
-          fontFamily: "Righteous",
-        }}
-        className="navbar-brand "
-        href="/"
-      >
-        APParty
-      </a>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a
-            style={{ color: "orange" }}
-            class="nav-item nav-link active"
-            href="#"
-          >
-            Home <span class="sr-only">(current)</span>
-          </a>
-          <a style={{ color: "orange" }} class="nav-item nav-link" href="#">
-            Features
-          </a>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-const NavBar = () => {
+const NavBar = ({ user }) => {
   return (
     <nav
       style={{
@@ -110,7 +71,7 @@ const NavBar = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Gabriel
+              {user ? user : "login"}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">
@@ -126,17 +87,6 @@ const NavBar = () => {
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Nome do evento"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
       </div>
     </nav>
   );

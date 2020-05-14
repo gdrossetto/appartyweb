@@ -1,15 +1,13 @@
-.form-container {
-  width: 50vw;
-  height: 50vh;
-
-  margin: auto;
+.form-page {
+  background-color: #320a45;
+  min-height: 100vh;
+  height: 100%;
 }
 
-.form-page {
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: #320a45;
+.form-container {
+  width: 50vw;
+
+  margin: auto;
 }
 
 .form-field {
@@ -20,4 +18,16 @@
   color: orange;
 
   font-family: Righteous, cursive;
+}
+
+.create-event-button {
+  width: 50vw;
+  background-color: orange;
+  border-width: 1px;
+  border-color: orange;
+  border-style: solid;
+  border-radius: 5px;
+  font-family: "Righteous", cursive;
+  font-size: 24px;
+  margin-bottom: 20px;
 }

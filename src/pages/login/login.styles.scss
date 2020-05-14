@@ -1,0 +1,32 @@
+.login-page {
+  background: linear-gradient(to right, #320a45, #411a5e);
+  height: 100vh;
+}
+
+.button-login {
+  border-radius: 8px;
+  background-color: orange;
+  border-color: orange;
+  width: 128px;
+  margin-bottom: 20px;
+  font-family: Righteous, cursive;
+}
+.login-title {
+  font-family: Righteous, cursive;
+  color: orange;
+  padding-top: 15px;
+}
+
+.first-access {
+  color: orange;
+  padding-bottom: 10px;
+  font-family: Righteous, cursive;
+}
+.keep-connected {
+  font-family: Righteous, cursive;
+}
+
+.input-style {
+  border-radius: 10px;
+  padding: 5px;
+}
