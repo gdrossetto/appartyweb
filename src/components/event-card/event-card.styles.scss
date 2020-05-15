@@ -1,47 +1,9 @@
-.event-card {
-  height: auto;
-  width: 250px;
-  background: linear-gradient(
-    270deg,
-    rgba(47, 16, 69, 1) 0%,
-    rgb(75, 26, 110) 50%,
-    rgba(47, 16, 69, 1) 100%
-  );
-  margin: 30px;
-  border-width: 2px;
-  border-color: orange;
-  border-style: solid;
-  border-radius: 0px;
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  word-wrap: break-word;
-  transform: translateZ(0);
-  transition: transform 0.25s ease-out;
-}
-.event-card:hover {
-  transform: scale(1.05);
-  box-shadow: orange;
-  -webkit-box-shadow: 9px 10px 37px -4px rgba(231, 166, 26, 1);
-  -moz-box-shadow: 9px 10px 37px -4px rgba(231, 166, 26, 1);
-  box-shadow: 9px 10px 37px -4px rgba(231, 166, 26, 1);
-}
-
 .event-name {
   margin-top: 0;
   color: white;
   font-family: "Righteous", cursive;
   text-align: center;
   padding-top: 5vh;
-}
-
-.event-photo {
-  height: 180px;
-  width: 246px;
-  border-width: 1px;
-  border-color: orange;
-  border-style: solid;
-  border-radius: 0px;
 }
 
 .event-container {

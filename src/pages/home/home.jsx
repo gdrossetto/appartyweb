@@ -11,6 +11,7 @@ import SearchCard from "../../components/search-card/search-card.component";
 const HomePage = () => {
   const [events, setEvents] = useState([]);
   const [user, setUser] = useState();
+  const [searchQuery, setSearchQuery] = useState("");
   let history = useHistory();
 
   function getEvents() {
@@ -40,7 +41,7 @@ const HomePage = () => {
       <NavBar user={user} />
 
       <div className="homepage-container">
-        <SearchCard />
+        <SearchCard searchHandler={(e) => setSearchQuery(e.target.value)} />
         {events.map((event) => {
           return (
             <EventCard

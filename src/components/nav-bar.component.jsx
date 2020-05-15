@@ -55,7 +55,7 @@ const NavBar = ({ user }) => {
             <a
               style={{ fontFamily: "Righteous" }}
               class="nav-link"
-              href="/newevent"
+              href="/myevents"
             >
               Meus eventos
             </a>

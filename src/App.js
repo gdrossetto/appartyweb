@@ -6,6 +6,7 @@ import HomePage from "./pages/home/home";
 import NewEvent from "./pages/new-event/new-event";
 import firebase from "firebase";
 import Signup from "./pages/signup/signup";
+import MyEvents from "./pages/my-events/my-events";
 
 export function initializeFirebase() {
   const firebaseConfig = {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/newevent" component={NewEvent} />
+        <Route exact path="/myevents" component={MyEvents} />
       </Switch>
     </Router>
   );

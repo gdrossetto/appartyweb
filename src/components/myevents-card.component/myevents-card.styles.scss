@@ -1,0 +1,36 @@
+.myevents-text {
+  color: white;
+  font-family: Righteous;
+  margin-top: 20px;
+}
+
+.myevents-card {
+  background-image: url("https://i.pinimg.com/originals/48/4e/8b/484e8b75c17479f727978e48958de565.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 280px;
+  width: 32vw;
+  height: 32vh;
+  margin: 10px;
+
+  text-align: center;
+}
+
+.myevents-content {
+  background-color: rgba(47, 16, 69, 0.7);
+  min-width: 280px;
+  width: 32vw;
+  height: 32vh;
+  border-width: 1px;
+  border-color: orange;
+  border-style: solid;
+}
+
+.myevents-content:hover {
+  background-color: rgba(241, 174, 87, 0.7);
+
+  .myevents-text {
+    color: rgba(47, 16, 69, 1);
+  }
+}
