@@ -11,7 +11,6 @@ import {
 import NavBar from "../../components/nav-bar.component";
 import firebase from "firebase";
 import { useEffect } from "react";
-import { initializeFirebase } from "../../App";
 
 function createBackendUser(
   fullName,
@@ -19,7 +18,8 @@ function createBackendUser(
   email,
   birthday,
   auth_token,
-  photo
+  photo,
+  password
 ) {
   fetch("http://192.168.0.10:8080/createUser", {
     method: "POST",
@@ -31,6 +31,7 @@ function createBackendUser(
       fullName: fullName,
       userName: userName,
       email: email,
+      password: password,
       birthday: birthday,
       auth_token: auth_token,
       photo: photo,
@@ -39,34 +40,6 @@ function createBackendUser(
     .then((response) => response.json())
     .then((resJson) => console.log(resJson))
     .catch((e) => console.error(e.message));
-}
-
-function signup(fullName, userHandle, email, birthday, password) {
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then((user) => {
-      user.user
-        .updateProfile({
-          displayName: userHandle,
-        })
-        .then(() => {
-          let user = firebase.auth().currentUser;
-          user.getIdToken().then((token) => {
-            createBackendUser(
-              fullName,
-              userHandle,
-              email,
-              birthday,
-              token,
-              "foto aqui"
-            );
-          });
-        });
-    })
-    .catch((error) => {
-      console.error(error.message);
-    });
 }
 
 export default function Signup() {
@@ -78,11 +51,6 @@ export default function Signup() {
 
   let history = useHistory();
 
-  useEffect(() => {
-    if (!firebase.apps.length) {
-      initializeFirebase();
-    }
-  });
   return (
     <div className="form-page">
       <NavBar />
@@ -161,9 +129,17 @@ export default function Signup() {
 
         <button
           onClick={() => {
-            signup(fullName, userHandle, email, new Date(), password);
+            createBackendUser(
+              fullName,
+              userHandle,
+              email,
+              "22/05/2020",
+              "asd",
+              "asdas,",
+              password
+            );
             setTimeout(() => {
-              history.push("/");
+              history.push("/login");
             }, 300);
           }}
           className="create-event-button"

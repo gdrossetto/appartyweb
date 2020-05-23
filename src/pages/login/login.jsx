@@ -1,24 +1,43 @@
 import React, { useState } from "react";
 import { Container, TextField } from "@material-ui/core";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import NavBar from "../../components/nav-bar.component";
 import firebase from "firebase";
 import { useEffect } from "react";
 import { initializeFirebase } from "../../App";
 import "./login.styles.scss";
 
-function login(email, password) {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .catch((error) => {
-      console.error(error.message);
-    });
-}
-
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  var history = useHistory();
+
+  function login(email, password) {
+    fetch("http://192.168.0.10:8080/checkLogin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((resJson) => {
+        console.log(resJson);
+        localStorage.setItem("userLoggedIn", JSON.stringify(resJson));
+      })
+      .then(() => history.push("/"))
+      .catch((e) => console.error(e.message));
+  }
 
   useEffect(() => {
     if (!firebase.apps.length) {

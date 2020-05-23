@@ -10,35 +10,31 @@ import SearchCard from "../../components/search-card/search-card.component";
 
 const HomePage = () => {
   const [events, setEvents] = useState([]);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   let history = useHistory();
 
   function getEvents() {
-    fetch("https://apparty1.herokuapp.com/eventos")
+    fetch("http://192.168.0.10:8080/getEvents")
       .then((res) => res.json())
       .then((resJson) => setEvents(resJson))
       .then(console.log(events));
   }
 
+  function getUser() {
+    return JSON.parse(localStorage.getItem("userLoggedIn"));
+  }
+
   useEffect(() => {
-    if (!firebase.apps.length) {
-      initializeFirebase();
-    }
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log(user.email);
-        setUser(user.displayName);
-      } else {
-        history.push("/login");
-      }
-    });
+    setUser(getUser());
+    console.log(user);
+
     getEvents();
-  }, [user]);
+  }, [events.length]);
 
   return (
     <div className="homepage">
-      <NavBar user={user} />
+      <NavBar user={user.user_handle} />
 
       <div className="homepage-container">
         <SearchCard searchHandler={(e) => setSearchQuery(e.target.value)} />
@@ -46,10 +42,10 @@ const HomePage = () => {
           return (
             <EventCard
               key={event.id}
-              foto={event.foto}
-              name={event.name}
-              local={event.local}
-              date={event.data}
+              foto={event.photo}
+              name={event.title}
+              local={event.location}
+              date={event.date}
             />
           );
         })}
