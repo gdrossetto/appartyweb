@@ -1,8 +1,9 @@
 import React from "react";
 import "./event-card.styles.scss";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const EventCard = ({ name, date, local, foto }) => {
+const EventCard = ({ name, date, local, foto, id }) => {
   return (
     <div
       style={{
@@ -18,6 +19,9 @@ const EventCard = ({ name, date, local, foto }) => {
         <h1 className="event-name">{name}</h1>
         <h2 className="event-name">{date}</h2>
         <h3 className="event-name">{local}</h3>
+        <Link to={"/event/" + id}>
+          <h3 className="event-name">Mais informações</h3>
+        </Link>
       </div>
     </div>
   );

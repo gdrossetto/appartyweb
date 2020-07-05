@@ -55,6 +55,15 @@ const NavBar = ({ user }) => {
             <a
               style={{ fontFamily: "Righteous" }}
               class="nav-link"
+              href="/newlocal"
+            >
+              Criar local
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a
+              style={{ fontFamily: "Righteous" }}
+              class="nav-link"
               href="/myevents"
             >
               Meus eventos

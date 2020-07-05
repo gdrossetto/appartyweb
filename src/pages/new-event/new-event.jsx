@@ -5,11 +5,15 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useHistory } from "react-router-dom";
+import firebase from "firebase";
+import FileUploader from "react-firebase-file-uploader";
 
 const NewEvent = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [categorias, setCategorias] = useState([]);
-  const [categoriaId, setCategoriaId] = useState();
+  const [locais, setLocais] = useState([]);
+  const [categoriaId, setCategoriaId] = useState(1);
+  const [localId, setLocalId] = useState(1);
   const [user, setUser] = useState();
   const [title, setTitle] = useState();
   const [subtitle, setSubtitle] = useState();
@@ -18,6 +22,31 @@ const NewEvent = () => {
   const [location, setLocation] = useState();
   const [price, setPrice] = useState();
   var history = useHistory();
+
+  function initializeFirebase() {
+    const firebaseConfig = {
+      apiKey: "AIzaSyAfTS_Gehnvxct7oVDSyfO9Ob92SFWwwQM",
+      authDomain: "partyplanner-7131d.firebaseapp.com",
+      databaseURL: "https://partyplanner-7131d.firebaseio.com",
+      projectId: "partyplanner-7131d",
+      storageBucket: "partyplanner-7131d.appspot.com",
+      messagingSenderId: "736310198115",
+      appId: "1:736310198115:web:5b083a51f683218106dd56",
+      measurementId: "G-3NBTPPY1Z8",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+  }
+
+  function handleUploadSuccess(filename) {
+    firebase
+      .storage()
+      .ref("images")
+      .child(filename)
+      .getDownloadURL()
+      .then((url) => setPhoto(url));
+  }
+
   function getUser() {
     return JSON.parse(localStorage.getItem("userLoggedIn"));
   }
@@ -31,13 +60,22 @@ const NewEvent = () => {
       .catch((e) => console.error(e.message));
   }
 
+  function getLocais() {
+    fetch("http://192.168.0.10:8080/getLocais")
+      .then((res) => res.json())
+      .then((resJson) => {
+        setLocais(resJson);
+      })
+      .catch((e) => console.error(e.message));
+  }
+
   function createEvent(
     title,
     subtitle,
     details,
     date,
     photo,
-    location,
+    locationId,
     price,
     categoryId,
     creatorId
@@ -48,6 +86,7 @@ const NewEvent = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify({
         title: title,
         subtitle: subtitle,
@@ -55,7 +94,7 @@ const NewEvent = () => {
         date: date,
         createdAt: new Date(),
         photo: photo,
-        location: location,
+        locationId: locationId,
         price: price,
         categoryId: categoryId,
         creatorId: creatorId,
@@ -64,9 +103,16 @@ const NewEvent = () => {
   }
 
   useEffect(() => {
+    if (!firebase.apps.length) {
+      initializeFirebase();
+    }
     setUser(getUser());
     getCategories();
   }, [categorias.length]);
+
+  useEffect(() => {
+    getLocais();
+  }, [locais.length]);
 
   return (
     <div className="form-page">
@@ -103,7 +149,7 @@ const NewEvent = () => {
             <select
               onChange={(e) => {
                 console.log(e.target.value);
-                setCategoriaId(e.target.value);
+                setCategoriaId(parseInt(e.target.value));
               }}
               class="form-control"
             >
@@ -144,13 +190,19 @@ const NewEvent = () => {
             <label className="form-label" htmlFor="">
               Local
             </label>
-            <input
+            <select
               onChange={(e) => {
-                setLocation(e.target.value);
+                console.log(e.target.value);
+                setLocalId(parseInt(e.target.value));
               }}
-              className="form-control"
-              type="text"
-            />
+              class="form-control"
+            >
+              {locais.length
+                ? locais.map((local) => {
+                    return <option value={local.id}>{local.nome}</option>;
+                  })
+                : null}
+            </select>
           </div>
           <div className="form-group">
             <label className="form-label" htmlFor="">
@@ -164,6 +216,34 @@ const NewEvent = () => {
               type="text"
             />
           </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="">
+              Foto
+            </label>
+            <br />
+            <label
+              style={{
+                backgroundColor: "orange",
+                color: "black",
+                fontFamily: "Righteous",
+                padding: 10,
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              Selecione uma foto
+              <FileUploader
+                hidden
+                accept="image/*"
+                name="foto"
+                randomizeFilename
+                storageRef={
+                  firebase.apps.length ? firebase.storage().ref("images") : null
+                }
+                onUploadSuccess={handleUploadSuccess}
+              />
+            </label>
+          </div>
         </form>
         <button
           onClick={() => {
@@ -172,8 +252,8 @@ const NewEvent = () => {
               subtitle,
               details,
               startDate,
-              null,
-              location,
+              photo,
+              localId,
               20.0,
               categoriaId,
               user.id

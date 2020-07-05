@@ -35,8 +35,8 @@ export default function Login() {
         console.log(resJson);
         localStorage.setItem("userLoggedIn", JSON.stringify(resJson));
       })
-      .then(() => history.push("/"))
-      .catch((e) => console.error(e.message));
+      .catch((e) => console.error(e.message))
+      .finally(() => history.push("/"));
   }
 
   useEffect(() => {

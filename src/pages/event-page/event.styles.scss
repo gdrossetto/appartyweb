@@ -1,0 +1,47 @@
+.event-page {
+  background-color: #320a45;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.event-name-orange {
+  color: orange;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.event-subtitle {
+  color: white;
+  text-align: center;
+}
+
+.event-date {
+  color: white;
+  text-align: center;
+  font-size: 16px;
+}
+
+.event-section-title {
+  color: orange;
+  margin-left: 10vw;
+  margin-top: 10vh;
+}
+
+.event-info-title {
+  color: white;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.button-presenca {
+  background-color: orange;
+  color: #320a45;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  align-self: center;
+  margin-bottom: 24px;
+  margin-top: 24px;
+  width: 20vw;
+  margin-left: 10vw;
+}

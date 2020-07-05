@@ -34,7 +34,7 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      <NavBar user={user.user_handle} />
+      <NavBar user={user ? user.user_handle : "login"} />
 
       <div className="homepage-container">
         <SearchCard searchHandler={(e) => setSearchQuery(e.target.value)} />
@@ -44,8 +44,9 @@ const HomePage = () => {
               key={event.id}
               foto={event.photo}
               name={event.title}
-              local={event.location}
-              date={event.date}
+              local={event.local_nome}
+              date={event.event_date}
+              id={event.id}
             />
           );
         })}
